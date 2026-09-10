@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08070d">
+<title>Rafzz Official — Feedback</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@500;600&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#08070d;--panel:rgba(19,16,28,.72);--pink:#ff9fbe;
+  --pink2:#ffd3df;--gold:#e8c98d;--text:#f8edf2;--muted:#b9aeb8;
+}
+body{
+  min-height:100vh;background:
+  radial-gradient(circle at 50% 18%,rgba(173,69,111,.20),transparent 32%),
+  radial-gradient(circle at 10% 85%,rgba(103,66,141,.16),transparent 35%),var(--bg);
+  color:var(--text);font-family:'Noto Sans JP',sans-serif;overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:42px 42px;mask-image:linear-gradient(to bottom,#000,transparent);
+}
+#petals{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:20}
+.petal{
+  position:absolute;top:-30px;width:10px;height:7px;border-radius:80% 20% 80% 20%;
+  background:linear-gradient(135deg,#ffd9e5,#f18eae);opacity:.78;
+  animation:fall linear forwards;filter:drop-shadow(0 0 4px rgba(255,160,190,.4));
+}
+@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(540deg);opacity:.08}}
+
+#intro{
+  position:fixed;inset:0;z-index:10;display:grid;place-items:center;
+  background:radial-gradient(circle at center,rgba(75,28,55,.45),transparent 42%),#08070d;
+  transition:opacity 1.15s ease,visibility 1.15s ease;
+}
+#intro.hide{opacity:0;visibility:hidden;pointer-events:none}
+.intro-box{text-align:center;padding:28px;animation:introIn 1.5s cubic-bezier(.2,.8,.2,1)}
+@keyframes introIn{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+.jp{
+  font-size:clamp(24px,6vw,42px);font-weight:300;letter-spacing:.35em;color:#f5dce5;
+  text-shadow:0 0 25px rgba(255,150,190,.3);margin-bottom:18px;
+}
+.kanji{
+  position:absolute;inset:0;display:flex;justify-content:space-around;align-items:center;
+  pointer-events:none;opacity:.055;font-size:clamp(90px,20vw,220px);font-weight:300;
+}
+.welcome{font-family:'Playfair Display',serif;font-size:clamp(24px,6vw,42px);line-height:1.3}
+.line{width:0;height:1px;margin:23px auto;background:linear-gradient(90deg,transparent,var(--pink),transparent);animation:line 1.5s 1s forwards}
+@keyframes line{to{width:min(300px,70vw)}}
+.sub{font-size:11px;letter-spacing:.34em;color:var(--muted);text-transform:uppercase;opacity:0;animation:fade 1s 1.35s forwards}
+@keyframes fade{to{opacity:1}}
+
+main{width:min(940px,100%);margin:auto;padding:55px 18px 45px;position:relative}
+.hero{text-align:center;padding:28px 12px 34px;animation:rise .9s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.logo{
+  width:82px;height:82px;margin:0 auto 20px;border:1px solid rgba(255,190,210,.38);
+  border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(145deg,rgba(255,159,190,.16),rgba(255,255,255,.03));
+  box-shadow:0 0 45px rgba(224,91,137,.16),inset 0 0 25px rgba(255,255,255,.04);
+  font-size:29px;color:var(--pink2);
+}
+h1{font-family:'Playfair Display',serif;font-size:clamp(32px,7vw,58px);font-weight:500;letter-spacing:.02em}
+.hero p{margin:13px auto 0;max-width:620px;color:var(--muted);font-size:13px;line-height:1.9}
+.jp-deco{font-size:11px;letter-spacing:.48em;color:rgba(255,190,210,.35);margin-top:15px}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:22px}
+.card{
+  position:relative;overflow:hidden;min-height:185px;padding:25px 21px;text-decoration:none;color:inherit;
+  border:1px solid rgba(255,210,225,.13);border-radius:22px;background:var(--panel);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+}
+.card:before{
+  content:"";position:absolute;inset:-80px -40px auto auto;width:170px;height:170px;border-radius:50%;
+  background:rgba(255,144,181,.08);filter:blur(5px)
+}
+.card:hover{transform:translateY(-7px);border-color:rgba(255,175,200,.4);box-shadow:0 18px 45px rgba(0,0,0,.3)}
+.icon{font-size:27px;margin-bottom:17px}
+.card h2{font-size:17px;font-weight:500;margin-bottom:8px}
+.card p{font-size:11px;line-height:1.7;color:var(--muted)}
+.arrow{position:absolute;right:19px;bottom:18px;color:var(--pink);font-size:20px}
+.footer{text-align:center;margin-top:38px;color:#756b75;font-size:10px;letter-spacing:.2em}
+.audio{
+  position:fixed;right:15px;bottom:15px;z-index:30;border:1px solid rgba(255,200,215,.2);
+  background:rgba(18,14,25,.78);color:#f5dce5;border-radius:50%;width:43px;height:43px;
+  cursor:pointer;backdrop-filter:blur(10px);font-size:17px
+}
+@media(max-width:700px){.cards{grid-template-columns:1fr}.card{min-height:145px}.hero{padding-top:20px}main{padding-top:35px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div id="petals"></div>
+
+<section id="intro">
+  <div class="kanji"><span>桜</span><span>夢</span><span>和</span><span>月</span></div>
+  <div class="intro-box">
+    <div class="jp">ようこそ</div>
+    <div class="welcome">Selamat datang di layanan<br>Rafzz Official</div>
+    <div class="line"></div>
+    <div class="sub">Japanese inspired • official service</div>
+  </div>
+</section>
+
+<main>
+  <section class="hero">
+    <div class="logo">桜</div>
+    <h1>Rafzz Official</h1>
+    <p>Selamat datang. Sampaikan masukan, pertanyaan, dan dukunganmu melalui layanan resmi Rafzz Official.</p>
+    <div class="jp-deco">あなたの声は大切です</div>
+  </section>
+
+  <section class="cards">
+    <a class="card" href="https://wa.me/6285181310929?text=Halo%20bang%20Rafzz%20saya%20mau%20Feedback%20nih" target="_blank" rel="noopener">
+      <div class="icon">💬</div>
+      <h2>Feedback</h2>
+      <p>Kirim feedback langsung ke Rafzz melalui WhatsApp dengan pesan yang sudah disiapkan.</p>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="card" href="https://whatsapp.com/channel/0029Vb75VQWA2pL9MTcaeQ31" target="_blank" rel="noopener">
+      <div class="icon">⛩️</div>
+      <h2>Channel Resmi Rafzz</h2>
+      <p>Tekan untuk join dan dapatkan informasi serta update terbaru Rafzz Official.</p>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="card" href="https://whatsapp.com/channel/0029Vb6xLJC2Jl8LYtMSmu3L" target="_blank" rel="noopener">
+      <div class="icon">🌸</div>
+      <h2>Channel Back Up</h2>
+      <p>Channel cadangan Rafzz Official. Bergabung sebagai alternatif informasi.</p>
+      <span class="arrow">↗</span>
+    </a>
+  </section>
+
+  <div class="footer">RA FZZ OFFICIAL　•　ありがとう</div>
+</main>
+
+<button class="audio" id="audioBtn" aria-label="Kontrol musik">♫</button>
+
+<audio id="bgm" loop preload="auto">
+  <!-- Letakkan file musik bernama "musik.mp3" satu folder dengan HTML ini -->
+  <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const intro=document.getElementById('intro');
+const petals=document.getElementById('petals');
+const bgm=document.getElementById('bgm');
+const audioBtn=document.getElementById('audioBtn');
+
+function makePetal(){
+  const p=document.createElement('span');p.className='petal';
+  p.style.left=Math.random()*100+'vw';
+  p.style.setProperty('--x',(Math.random()*220-110)+'px');
+  p.style.animationDuration=(6+Math.random()*7)+'s';
+  p.style.animationDelay=(Math.random()*2)+'s';
+  p.style.transform='rotate('+Math.random()*180+'deg) scale('+(0.6+Math.random()*1.2)+')';
+  petals.appendChild(p);setTimeout(()=>p.remove(),15000);
+}
+for(let i=0;i<18;i++) setTimeout(makePetal,i*220);
+setInterval(makePetal,650);
+
+window.addEventListener('load',()=>{
+  setTimeout(()=>intro.classList.add('hide'),3900);
+  bgm.volume=.18;
+  // Browser biasanya memblokir autoplay; musik mulai setelah interaksi pengguna.
+});
+
+document.body.addEventListener('click',()=>{
+  if(bgm.paused){
+    bgm.play().then(()=>audioBtn.textContent='♫').catch(()=>{});
+  }
+},{once:true});
+
+audioBtn.addEventListener('click',(e)=>{
+  e.stopPropagation();
+  if(bgm.paused){bgm.play().then(()=>audioBtn.textContent='♫').catch(()=>{});}
+  else{bgm.pause();audioBtn.textContent='🔇';}
+});
+</script>
+</body>
+</html>
